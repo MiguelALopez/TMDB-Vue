@@ -1,7 +1,8 @@
 <script setup lang="ts">
-
+import HeaderNavbar from '@/components/HeaderNavbar.vue'
 </script>
 
 <template>
-  <h1 class="text-2xl font-bold text-center m-4">TMDB-Vue</h1>
+  <header-navbar />
+
 </template>
