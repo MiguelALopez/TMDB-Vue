@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { Movie } from '@/types/movie.ts'
+import type { MovieResponse } from '@/types/movie.ts'
 
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
@@ -9,7 +9,8 @@ const api = axios.create({
   }
 })
 
-export const getMovies = async (page = 1, language = 'en'): Promise<Movie[]> => {
-  const { data } = await api.get(`/movie/now_playing?language=${language}&page=${page}`)
-  return data.results
+export const getMovies = async (page = 1, language = 'en'): Promise<MovieResponse> => {
+  const { data } = await api.get<MovieResponse>(`/movie/now_playing?language=${language}&page=${page}`)
+  console.log(data)
+  return data
 }
