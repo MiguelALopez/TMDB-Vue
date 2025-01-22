@@ -30,3 +30,7 @@ coverage
 package-lock.json
 
 *.tsbuildinfo
+
+# Auto-generated files
+auto-imports.d.ts
+components.d.ts
