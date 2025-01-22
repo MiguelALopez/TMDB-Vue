@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Movie } from '@/types/movie.ts'
+import type { Movie } from '@/types/movie.ts';
 
-const { movie } = defineProps<{ movie: Movie }>()
+const { movie } = defineProps<{ movie: Movie }>();
 
 </script>
 

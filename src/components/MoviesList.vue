@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { getMovies } from '@/services/moviesService.ts'
+import { getMovies } from '@/services/moviesService.ts';
 
-import { onMounted, ref } from 'vue'
-import type { Movie } from '@/types/movie.ts'
+import { onMounted, ref } from 'vue';
+import type { Movie } from '@/types/movie.ts';
 
-const movies = ref<Movie[]>([])
-const total_pages = ref(0)
+const movies = ref<Movie[]>([]);
+const total_pages = ref(0);
 
 onMounted(() => {
-  loadMovies()
-})
+  loadMovies();
+});
 
 const loadMovies = async (page = 1) => {
-  const response = await getMovies(page)
-  movies.value = response.results
-  total_pages.value = response.total_pages
-}
+  const response = await getMovies(page);
+  movies.value = response.results;
+  total_pages.value = response.total_pages;
+};
 </script>
 
 <template>

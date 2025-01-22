@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import HeaderNavbar from '@/components/HeaderNavbar.vue'
-import MoviesList from '@/components/MoviesList.vue'
+import HeaderNavbar from '@/components/HeaderNavbar.vue';
+import MoviesList from '@/components/MoviesList.vue';
 </script>
 
 <template>

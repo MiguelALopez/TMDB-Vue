@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Search } from '@element-plus/icons-vue'
-const input1 = ref('')
+import { ref } from 'vue';
+import { Search } from '@element-plus/icons-vue';
+
+const input1 = ref('');
 </script>
 
 <template>
