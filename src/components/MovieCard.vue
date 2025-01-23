@@ -2,11 +2,11 @@
 import type { Movie } from '@/types/movie.ts';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+import MovieRate from '@/components/MovieRate.vue';
 
 const { movie } = defineProps<{ movie: Movie }>();
 const store = useStore();
 const genres = computed(() => store.getters.getGenres);
-const vote = computed(() => Number((movie.vote_average / 2).toPrecision(2)));
 </script>
 
 <template>
@@ -18,26 +18,25 @@ const vote = computed(() => Number((movie.vote_average / 2).toPrecision(2)));
       :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
       alt=""
     />
-    <div class="card-description w-full h-full bg-black">
-      <div class="flex flex-col h-full py-4 px-4 text-white">
-        <h1 class="text-white text-center text-2xl font-bold">{{ movie.title }}</h1>
-        <p class="mt-4">{{ movie.overview }}</p>
+    <router-link :to="`/movie/${movie.id}`">
+      <div class="card-description w-full h-full bg-black">
+        <div class="flex flex-col h-full py-4 px-4 text-white">
+          <h1 class="text-white text-center text-2xl font-bold">{{ movie.title }}</h1>
+          <p class="mt-4">{{ movie.overview }}</p>
 
-        <div class="flex flex-wrap gap-2 mt-4">
-          <div v-for="genre in movie.genre_ids" :key="genre" class="bg-zinc-700 px-2 py-1 rounded">
-            {{ genres[genre] }}
+          <div class="flex flex-wrap gap-2 mt-4">
+            <div
+              v-for="genre in movie.genre_ids"
+              :key="genre"
+              class="bg-zinc-700 px-2 py-1 rounded"
+            >
+              {{ genres[genre] }}
+            </div>
           </div>
+          <movie-rate class="mt-4" :rate="movie.vote_average" />
         </div>
-        <el-rate
-          class="mt-4"
-          v-model="vote"
-          disabled
-          show-score
-          text-color="#ff9900"
-          score-template="{value} / 5"
-        />
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 

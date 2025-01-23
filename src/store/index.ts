@@ -5,13 +5,15 @@ import type { MovieGenre } from '@/types/movie.ts';
 export interface State {
   searchQuery: string;
   genres: { [key: number]: string };
+  languages: { [key: string]: string };
 }
 
 const store = createStore({
   state(): State {
     return {
       searchQuery: '',
-      genres: [],
+      genres: {},
+      languages: {},
     };
   },
   mutations: {
@@ -24,6 +26,19 @@ const store = createStore({
         return acc;
       }, {});
     },
+    setLanguages(
+      state: State,
+      languages: {
+        iso_639_1: string;
+        english_name: string;
+        name: string;
+      }[],
+    ) {
+      state.languages = languages.reduce((acc: { [key: string]: string }, language) => {
+        acc[language.iso_639_1] = language.english_name;
+        return acc;
+      }, {});
+    },
   },
   actions: {
     search({ commit }, query: string) {
@@ -31,6 +46,16 @@ const store = createStore({
     },
     setGenres({ commit }, genres: MovieGenre[]) {
       commit('setGenres', genres);
+    },
+    setLanguages(
+      { commit },
+      languages: {
+        iso_639_1: string;
+        english_name: string;
+        name: string;
+      }[],
+    ) {
+      commit('setLanguages', languages);
     },
   },
   getters: {
@@ -42,6 +67,9 @@ const store = createStore({
     },
     findGenreById: (state: State) => (id: number) => {
       return state.genres[id];
+    },
+    getLanguages(state: State) {
+      return state.languages;
     },
   },
 });

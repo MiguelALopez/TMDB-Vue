@@ -4,7 +4,12 @@ module.exports = {
     './index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      container: {
+        center: true, // Centers the container by default
+        padding: '1rem', // Adds default padding
+      },
+    },
   },
   plugins: [],
 };

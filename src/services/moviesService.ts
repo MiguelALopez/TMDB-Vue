@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { MovieGenre, MovieResponse } from '@/types/movie.ts';
+import type { Movie, MovieGenre, MovieResponse } from '@/types/movie.ts';
 
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
@@ -17,7 +17,6 @@ export const getMovies = async (
   const { data } = await api.get<MovieResponse>(
     `/movie/${movieType}?language=${language}&page=${page}`,
   );
-  console.log(data.results);
   return data;
 };
 
@@ -28,5 +27,21 @@ export const searchMovie = async (query: string, page = 1): Promise<MovieRespons
 
 export const getGenres = async (): Promise<{ genres: MovieGenre[] }> => {
   const { data } = await api.get<{ genres: MovieGenre[] }>('/genre/movie/list');
+  return data;
+};
+
+export const getMovie = async (movieId: number): Promise<Movie> => {
+  const { data } = await api.get<Movie>(`/movie/${movieId}`);
+  return data;
+};
+
+export const getLanguages = async (): Promise<
+  {
+    iso_639_1: string;
+    english_name: string;
+    name: string;
+  }[]
+> => {
+  const { data } = await api.get('/configuration/languages');
   return data;
 };
