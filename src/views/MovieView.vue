@@ -86,7 +86,7 @@ onMounted(async () => {
               <p class="text-zinc-300">{{ languages[movie.original_language] }}</p>
             </div>
           </div>
-          <div v-if="movie?.production_companies" class="mt-3">
+          <div v-if="movie?.production_companies?.length" class="mt-3">
             <h2 class="text-xl font-bold">Studios</h2>
             <div class="flex gap-3 items-center text-zinc-300">
               {{ movie.production_companies.map((company) => company.name).join(', ') }}
