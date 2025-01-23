@@ -5,8 +5,7 @@ import { useStore } from 'vuex';
 
 const { movie } = defineProps<{ movie: Movie }>();
 const store = useStore();
-const genres = store.getters.getGenres;
-
+const genres = computed(() => store.getters.getGenres);
 const vote = computed(() => Number((movie.vote_average / 2).toPrecision(2)));
 </script>
 
