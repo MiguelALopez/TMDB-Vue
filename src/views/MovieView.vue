@@ -36,11 +36,11 @@ onMounted(async () => {
   <div class="py-10 text-white bg-zinc-800 h-full min-h-screen" v-if="movie">
     <div class="container">
       <router-link to="/">
-        <el-icon class="mx-10 mb-10" size="30">
+        <el-icon class="sm:mx-10 mx-5 mb-10" size="30">
           <Back />
         </el-icon>
       </router-link>
-      <div class="flex sm:flex-row flex-col gap-10 px-10">
+      <div class="flex sm:flex-row flex-col gap-10 sm:px-10 px-5">
         <div class="lg:flex-[0_0_25%] flex-1">
           <el-empty
             class="bg-zinc-100 rounded-lg"
