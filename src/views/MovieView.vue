@@ -72,7 +72,7 @@ onMounted(async () => {
             <h2 class="text-xl font-bold">Overview</h2>
             <p>{{ movie?.overview }}</p>
           </div>
-          <div class="flex gap-10 mt-3">
+          <div class="flex flex-wrap gap-10 mt-3">
             <div v-if="movie?.budget">
               <h2 class="text-lg font-bold">Budget</h2>
               <p class="text-zinc-300">{{ budget }}</p>
