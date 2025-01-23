@@ -56,7 +56,7 @@ const loadMovies = async (movieType: FilterType = 'now_playing', page = 1, searc
 </script>
 
 <template>
-  <div class="mx-10">
+  <div class="mx-10" v-if="movies.length">
     <div class="flex mt-10 justify-end">
       <el-pagination
         layout="prev, pager, next"

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { MovieResponse } from '@/types/movie.ts';
+import type { MovieGenre, MovieResponse } from '@/types/movie.ts';
 
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
@@ -23,5 +23,10 @@ export const getMovies = async (
 
 export const searchMovie = async (query: string, page = 1): Promise<MovieResponse> => {
   const { data } = await api.get<MovieResponse>(`/search/movie?query=${query}&page=${page}`);
+  return data;
+};
+
+export const getGenres = async (): Promise<{ genres: MovieGenre[] }> => {
+  const { data } = await api.get<{ genres: MovieGenre[] }>('/genre/movie/list');
   return data;
 };

@@ -32,7 +32,7 @@ export interface Movie {
     backdrop_path: string | null;
   };
   budget: number;
-  genres: Genre[];
+  genre_ids: number[];
   homepage: string | null;
   id: number;
   imdb_id: string | null;
@@ -60,4 +60,9 @@ export interface MovieResponse {
   results: Movie[];
   total_results: number;
   total_pages: number;
+}
+
+export interface MovieGenre {
+  id: number;
+  name: string;
 }
