@@ -19,14 +19,20 @@ const loadMovies = async (page = 1) => {
 </script>
 
 <template>
-  <div class="flex mt-10 justify-end mx-10">
-    <el-pagination layout="prev, pager, next" :total="total_pages" @current-change="loadMovies" />
-  </div>
-  <div class="mt-3 mx-10 grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-5">
-    <movie-card v-for="(movie, index) in movies" :key="index" :movie="movie" />
-  </div>
-  <div class="flex my-10 justify-end mx-10">
-    <el-pagination background layout="prev, pager, next" :total="total_pages"
-                   @current-change="loadMovies" />
+  <div class="mx-10">
+    <div class="flex mt-10 justify-end">
+      <el-pagination layout="prev, pager, next" :total="total_pages" @current-change="loadMovies" />
+    </div>
+    <div class="mt-3 grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-5">
+      <movie-card v-for="(movie, index) in movies" :key="index" :movie="movie" />
+    </div>
+    <div class="flex my-10 justify-end">
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="total_pages"
+        @current-change="loadMovies"
+      />
+    </div>
   </div>
 </template>
