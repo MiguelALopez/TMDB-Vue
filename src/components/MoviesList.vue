@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MovieCard from '@/components/MovieCard.vue';
 import { getMovies, searchMovie } from '@/services/moviesService.ts';
 import { computed, onMounted, ref, watch } from 'vue';
 import type { Movie, MovieResponse } from '@/types/movie.ts';

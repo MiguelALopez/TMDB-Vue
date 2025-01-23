@@ -17,6 +17,7 @@ export const getMovies = async (
   const { data } = await api.get<MovieResponse>(
     `/movie/${movieType}?language=${language}&page=${page}`,
   );
+  console.log(data.results);
   return data;
 };
 
